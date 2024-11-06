@@ -1,26 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Home</title>
 </head>
 <body>
-    <form action="#" th:action="@{/index}" th:object="${user}" method="post">
-        <div>
-            <label>Username:</label>
-            <input type="text" name="username" id="username" required>
-        </div>
-        <div>
-            <label>Password:</label>
-            <input type="password" name="password" id="password" required>
-        </div>
-        <div>
-            <label>Email:</label>
-            <input type="email" name="email" id="email" required>
-        </div>
-        <div>
-            <button type="submit">Submit</button>
-        </div>
+    <form action="login">
+        <input type="submit" value="Login">
+    </form>
+    <form action="register">
+        <input type="submit" value="register">
+    </form>
+    <form action="users">
+        <input type="submit" value="users">
     </form>
 </body>
 </html>

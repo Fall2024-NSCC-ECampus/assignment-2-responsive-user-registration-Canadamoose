@@ -8,29 +8,37 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class UserController {
+public class ViewController {
 
     @Autowired
     UserService userService;
 
-    @PostMapping("/index")
+    @GetMapping("/")
+    public String index(){
+        return "index";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String register(){
+        return "register";
+    }
+
+    @PostMapping("/register")
     public String addUser(@ModelAttribute("user") User user) {
         userService.addUser(user);
-        return "redirect:/users";
+        return "redirect:/";
     }
 
     @GetMapping("/users")
     public String getUsers(Model model) {
         model.addAttribute("getUsers", userService.getUsers());
         return "users";
-    }
-
-    @GetMapping("/index")
-    public String user(Model model) {
-        model.addAttribute("addUser", new User());
-        return "index";
     }
 }

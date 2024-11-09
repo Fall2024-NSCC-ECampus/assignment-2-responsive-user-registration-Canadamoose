@@ -1,6 +1,6 @@
 package com.example.assignment2.controller;
 
-import com.example.assignment2.entity.User;
+import com.example.assignment2.model.MyUser;
 import com.example.assignment2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,7 @@ public class ViewController {
 
     @GetMapping("/")
     public String index(){
-        return "index";
+        return "login";
     }
 
     @GetMapping("/login")
@@ -31,9 +31,14 @@ public class ViewController {
     }
 
     @PostMapping("/register")
-    public String addUser(@ModelAttribute("user") User user) {
+    public String addUser(@ModelAttribute("user") MyUser user) {
         userService.addUser(user);
-        return "redirect:/";
+        return "redirect:/users";
+    }
+
+    @GetMapping("/logout")
+    public String logout(){
+        return "redirect:/login";
     }
 
     @GetMapping("/users")

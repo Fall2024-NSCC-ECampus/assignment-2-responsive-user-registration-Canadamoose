@@ -1,10 +1,17 @@
-package com.example.assignment2.entity;
+package com.example.assignment2.model;
 
 import jakarta.persistence.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 @Table(name="users")
-public class User {
+public class MyUser {
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -48,7 +55,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = passwordEncoder().encode(password);
     }
 
 }

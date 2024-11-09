@@ -1,10 +1,12 @@
 package com.example.assignment2.repository;
 
-import com.example.assignment2.entity.User;
+import com.example.assignment2.model.MyUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+import java.util.Optional;
 
+@Repository
+public interface UserRepository extends JpaRepository<MyUser, Long> {
+    Optional<MyUser> findByUsername(String username);
 }
